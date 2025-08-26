@@ -1,0 +1,180 @@
+[
+  {
+    "name": "PDF Invoices to Finance",
+    "priority": 10,
+    "active": true,
+    "when": {
+      "filename_regex": "invoice|bill|statement|receipt",
+      "mime_in": ["application/pdf"]
+    },
+    "then": {
+      "label": "finance",
+      "tags_add": ["invoice", "pdf"],
+      "move_to": "{{HOME}}/AutomataOrganized/Finance/{{YYYY}}/{{MM}}"
+    }
+  },
+  {
+    "name": "Bank Statements",
+    "priority": 15,
+    "active": true,
+    "when": {
+      "filename_regex": "statement|bank.*statement",
+      "mime_in": ["application/pdf"]
+    },
+    "then": {
+      "label": "finance",
+      "tags_add": ["bank-statement", "pdf"],
+      "move_to": "{{HOME}}/AutomataOrganized/Finance/Statements/{{YYYY}}"
+    }
+  },
+  {
+    "name": "Images to Media",
+    "priority": 20,
+    "active": true,
+    "when": {
+      "mime_startswith": "image/"
+    },
+    "then": {
+      "label": "media",
+      "tags_add": ["image"],
+      "move_to": "{{HOME}}/AutomataOrganized/Media/Images/{{YYYY}}/{{MM}}"
+    }
+  },
+  {
+    "name": "Videos to Media",
+    "priority": 25,
+    "active": true,
+    "when": {
+      "mime_startswith": "video/"
+    },
+    "then": {
+      "label": "media",
+      "tags_add": ["video"],
+      "move_to": "{{HOME}}/AutomataOrganized/Media/Videos/{{YYYY}}"
+    }
+  },
+  {
+    "name": "Audio Files to Media",
+    "priority": 30,
+    "active": true,
+    "when": {
+      "mime_startswith": "audio/"
+    },
+    "then": {
+      "label": "media",
+      "tags_add": ["audio"],
+      "move_to": "{{HOME}}/AutomataOrganized/Media/Audio/{{YYYY}}"
+    }
+  },
+  {
+    "name": "PDF Documents",
+    "priority": 40,
+    "active": true,
+    "when": {
+      "mime_in": ["application/pdf"]
+    },
+    "then": {
+      "label": "documents",
+      "tags_add": ["pdf", "document"],
+      "move_to": "{{HOME}}/AutomataOrganized/Documents/PDF/{{YYYY}}"
+    }
+  },
+  {
+    "name": "Microsoft Office Documents",
+    "priority": 45,
+    "active": true,
+    "when": {
+      "mime_in": [
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "application/vnd.ms-excel",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "application/vnd.ms-powerpoint",
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+      ]
+    },
+    "then": {
+      "label": "documents",
+      "tags_add": ["office", "document"],
+      "move_to": "{{HOME}}/AutomataOrganized/Documents/Office/{{YYYY}}"
+    }
+  },
+  {
+    "name": "Text Documents",
+    "priority": 50,
+    "active": true,
+    "when": {
+      "mime_in": ["text/plain", "text/rtf"]
+    },
+    "then": {
+      "label": "documents",
+      "tags_add": ["text", "document"],
+      "move_to": "{{HOME}}/AutomataOrganized/Documents/Text/{{YYYY}}"
+    }
+  },
+  {
+    "name": "Python Code Files",
+    "priority": 60,
+    "active": true,
+    "when": {
+      "filename_regex": "\\.py$"
+    },
+    "then": {
+      "label": "code",
+      "tags_add": ["python", "source-code"],
+      "move_to": "{{HOME}}/AutomataOrganized/Code/Python"
+    }
+  },
+  {
+    "name": "Web Development Files",
+    "priority": 65,
+    "active": true,
+    "when": {
+      "filename_regex": "\\.(html|htm|css|js|jsx|ts|tsx|vue|php)$"
+    },
+    "then": {
+      "label": "code",
+      "tags_add": ["web-dev", "source-code"],
+      "move_to": "{{HOME}}/AutomataOrganized/Code/Web"
+    }
+  },
+  {
+    "name": "Archive Files",
+    "priority": 70,
+    "active": true,
+    "when": {
+      "filename_regex": "\\.(zip|rar|tar|gz|7z|tar\\.gz|tar\\.bz2)$"
+    },
+    "then": {
+      "label": "archives",
+      "tags_add": ["archive", "compressed"],
+      "move_to": "{{HOME}}/AutomataOrganized/Archives/{{YYYY}}"
+    }
+  },
+  {
+    "name": "Executable Files",
+    "priority": 75,
+    "active": true,
+    "when": {
+      "filename_regex": "\\.(exe|msi|deb|rpm|dmg|pkg|app)$"
+    },
+    "then": {
+      "label": "software",
+      "tags_add": ["executable", "installer"],
+      "move_to": "{{HOME}}/AutomataOrganized/Software/{{YYYY}}"
+    }
+  },
+  {
+    "name": "Large Files (Over 100MB)",
+    "priority": 80,
+    "active": false,
+    "when": {
+      "size_gt_bytes": 104857600
+    },
+    "then": {
+      "label": "large-files",
+      "tags_add": ["large-file"],
+      "move_to": "{{HOME}}/AutomataOrganized/LargeFiles/{{YYYY}}"
+    }
+  }
+]
