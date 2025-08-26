@@ -1,0 +1,661 @@
+/* AUTOMATA02 Power BI Style Design System */
+
+/* Import Segoe UI and Inter fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables - Power BI Inspired */
+:root {
+  /* Brand Colors - Enhanced Power BI palette */
+  --brand-primary: #0078D4;
+  --brand-primary-700: #106EBE;
+  --brand-primary-800: #005A9E;
+  --brand-accent: #40E0D0;
+  --brand-secondary: #8764B8;
+  --brand-muted: #B8C6CF;
+  
+  /* Power BI Background Colors */
+  --bg-surface: #F8F9FA;
+  --bg-panel: #FFFFFF;
+  --bg-elevated: #FFFFFF;
+  --bg-dark-surface: #1B1B1B;
+  --bg-dark-panel: #252526;
+  --bg-dark-elevated: #2D2D30;
+  
+  /* Modern Gradients */
+  --gradient-primary: linear-gradient(135deg, #0078D4 0%, #40E0D0 100%);
+  --gradient-secondary: linear-gradient(135deg, #8764B8 0%, #0078D4 100%);
+  --gradient-surface: linear-gradient(145deg, #F8F9FA 0%, #E9ECEF 100%);
+  --gradient-dark: linear-gradient(145deg, #1B1B1B 0%, #252526 100%);
+  
+  /* Glass Morphism */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-backdrop: blur(10px);
+  --glass-dark-bg: rgba(0, 0, 0, 0.1);
+  --glass-dark-border: rgba(255, 255, 255, 0.1);
+  
+  /* Text Colors - Power BI inspired */
+  --text-primary: #323130;
+  --text-secondary: #605E5C;
+  --text-tertiary: #8A8886;
+  --text-white: #FFFFFF;
+  --text-dark-primary: #FFFFFF;
+  --text-dark-secondary: #D4D4D4;
+  --text-dark-tertiary: #969696;
+  --text-success: #107C10;
+  --text-warning: #FF8C00;
+  --text-danger: #D13438;
+  --text-info: #0078D4;
+  
+  /* Semantic Colors */
+  --semantic-info: #60A5FA;
+  --semantic-success: #10B981;
+  --semantic-danger: #EF4444;
+  --border-muted: rgba(255,255,255,0.06);
+  
+  /* Typography - Power BI style */
+  --font-family-primary: 'Segoe UI', system-ui, 'Inter', -apple-system, sans-serif;
+  --font-family-mono: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  
+  /* Spacing Scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+  --space-4xl: 40px;
+  --space-5xl: 48px;
+  
+  /* Radius */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  
+  /* Modern Elevation - Power BI style */
+  --elevation-card: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --elevation-hover: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --elevation-modal: 0 16px 64px rgba(0, 0, 0, 0.2);
+  --elevation-floating: 0 32px 128px rgba(0, 0, 0, 0.25);
+  
+  /* Dark mode elevations */
+  --elevation-dark-card: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --elevation-dark-hover: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --elevation-dark-modal: 0 16px 64px rgba(0, 0, 0, 0.5);
+  
+  /* Motion */
+  --duration-short: 120ms;
+  --duration-med: 240ms;
+  --duration-long: 420ms;
+  --easing: cubic-bezier(.2,.9,.3,1);
+}
+
+/* Global Streamlit Overrides - Power BI Style */
+.stApp {
+  background: var(--gradient-surface) !important;
+  font-family: var(--font-family-primary) !important;
+  color: var(--text-primary) !important;
+  min-height: 100vh;
+}
+
+/* Power BI Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .stApp {
+    background: var(--gradient-dark) !important;
+    color: var(--text-dark-primary) !important;
+  }
+}
+
+/* Hide Streamlit menu and footer */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
+/* Power BI Header Styling */
+.main-header {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  border-bottom: 1px solid var(--glass-border);
+  padding: var(--space-xl) var(--space-3xl);
+  margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-2xl)) var(--space-3xl) calc(-1 * var(--space-2xl));
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--elevation-card);
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-high);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.app-logo {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 16px;
+  box-shadow: var(--elevation-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+  transform: translateX(-100%);
+  transition: transform var(--duration-med) var(--easing);
+}
+
+.app-logo:hover::before {
+  transform: translateX(100%);
+}
+
+/* Power BI Sidebar Styling */
+.css-1d391kg {
+  background: var(--bg-panel) !important;
+  border-right: 1px solid var(--glass-border) !important;
+  box-shadow: var(--elevation-card) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .css-1d391kg {
+    background: var(--bg-dark-panel) !important;
+    border-right: 1px solid var(--glass-dark-border) !important;
+  }
+}
+
+.css-1d391kg .css-17eq0hr {
+  color: var(--text-medium) !important;
+}
+
+/* Page Container */
+.main-content {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 var(--space-2xl);
+}
+
+/* Power BI Card Components */
+.metric-card, .info-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3xl);
+  box-shadow: var(--elevation-card);
+  transition: all var(--duration-med) var(--easing);
+  margin-bottom: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-card::before, .info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  .metric-card, .info-card {
+    background: var(--bg-dark-elevated);
+    border: 1px solid var(--glass-dark-border);
+    box-shadow: var(--elevation-dark-card);
+  }
+}
+
+.metric-card:hover, .info-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--elevation-hover);
+}
+
+@media (prefers-color-scheme: dark) {
+  .metric-card:hover, .info-card:hover {
+    box-shadow: var(--elevation-dark-hover);
+  }
+}
+
+.metric-card h3, .info-card h3 {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 var(--space-md) 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: var(--font-family-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  .metric-card h3, .info-card h3 {
+    color: var(--text-dark-secondary);
+  }
+}
+
+.metric-card .metric-value {
+  color: var(--text-primary);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (prefers-color-scheme: dark) {
+  .metric-card .metric-value {
+    color: var(--text-dark-primary);
+    -webkit-text-fill-color: var(--text-dark-primary);
+  }
+}
+
+.metric-card .metric-change {
+  color: var(--text-success);
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.metric-change::before {
+  content: "↗";
+  font-size: 16px;
+}
+
+.metric-change.negative {
+  color: var(--text-danger);
+}
+
+.metric-change.negative::before {
+  content: "↘";
+}
+
+/* Power BI Button Styling */
+.stButton > button {
+  background: var(--gradient-primary) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--space-lg) var(--space-2xl) !important;
+  font-family: var(--font-family-primary) !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  transition: all var(--duration-med) var(--easing) !important;
+  height: 48px !important;
+  box-shadow: var(--elevation-card) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.stButton > button:hover {
+  background: var(--gradient-secondary) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: var(--elevation-hover) !important;
+}
+
+.stButton > button::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent) !important;
+  transition: left var(--duration-med) var(--easing) !important;
+}
+
+.stButton > button:hover::before {
+  left: 100% !important;
+}
+
+.stButton > button[kind="secondary"] {
+  background: var(--bg-elevated) !important;
+  color: var(--text-high) !important;
+  border: 1px solid var(--border-muted) !important;
+}
+
+.stButton > button[kind="secondary"]:hover {
+  background: var(--bg-panel) !important;
+  border-color: var(--brand-primary) !important;
+}
+
+/* Input Styling */
+.stTextInput > div > div > input, .stSelectbox > div > div > select, .stNumberInput > div > div > input {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-muted) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-high) !important;
+  font-family: var(--font-family) !important;
+  padding: var(--space-md) !important;
+  height: 44px !important;
+}
+
+.stTextInput > div > div > input:focus, .stSelectbox > div > div > select:focus, .stNumberInput > div > div > input:focus {
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 0 3px rgba(0, 194, 168, 0.1) !important;
+}
+
+/* Text Area */
+.stTextArea > div > div > textarea {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-muted) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-high) !important;
+  font-family: var(--font-family) !important;
+  padding: var(--space-md) !important;
+}
+
+/* Checkbox and Radio */
+.stCheckbox > label > div {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-muted) !important;
+}
+
+/* Slider */
+.stSlider > div > div > div > div {
+  background-color: var(--brand-primary) !important;
+}
+
+/* Tab Styling */
+.stTabs [data-baseweb="tab-list"] {
+  background-color: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs);
+  border: 1px solid var(--border-muted);
+  gap: var(--space-xs);
+}
+
+.stTabs [data-baseweb="tab"] {
+  background-color: transparent !important;
+  color: var(--text-medium) !important;
+  border-radius: var(--radius-xs) !important;
+  padding: var(--space-md) var(--space-lg) !important;
+  font-family: var(--font-family) !important;
+  font-weight: 500 !important;
+  border: none !important;
+  transition: all var(--duration-short) var(--easing) !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+  background-color: var(--bg-panel) !important;
+  color: var(--text-high) !important;
+}
+
+.stTabs [aria-selected="true"] {
+  background-color: var(--brand-primary) !important;
+  color: white !important;
+}
+
+/* Metric Component */
+.css-1r6slb0 {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-muted) !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--space-xl) !important;
+  box-shadow: var(--elevation-card) !important;
+}
+
+.css-1r6slb0 .metric-label {
+  color: var(--text-medium) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+.css-1r6slb0 .metric-value {
+  color: var(--text-high) !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+}
+
+/* Alert/Info Boxes */
+.stAlert {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-muted) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-high) !important;
+  font-family: var(--font-family) !important;
+}
+
+.stAlert[data-baseweb="notification"][kind="info"] {
+  background-color: rgba(96, 165, 250, 0.1) !important;
+  border-color: var(--semantic-info) !important;
+  color: var(--semantic-info) !important;
+}
+
+.stAlert[data-baseweb="notification"][kind="success"] {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  border-color: var(--semantic-success) !important;
+  color: var(--semantic-success) !important;
+}
+
+.stAlert[data-baseweb="notification"][kind="error"] {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  border-color: var(--semantic-danger) !important;
+  color: var(--semantic-danger) !important;
+}
+
+.stAlert[data-baseweb="notification"][kind="warning"] {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  border-color: var(--text-warning) !important;
+  color: var(--text-warning) !important;
+}
+
+/* Expander */
+.streamlit-expanderHeader {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-muted) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-high) !important;
+  font-family: var(--font-family) !important;
+  font-weight: 500 !important;
+}
+
+.streamlit-expanderContent {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-muted) !important;
+  border-top: none !important;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm) !important;
+  color: var(--text-high) !important;
+}
+
+/* DataFrames */
+.stDataFrame {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-muted) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+/* Progress Bars */
+.stProgress > div > div > div > div {
+  background-color: var(--brand-primary) !important;
+}
+
+/* File Uploader */
+.stFileUploader > div > div {
+  background-color: var(--bg-elevated) !important;
+  border: 2px dashed var(--border-muted) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-medium) !important;
+  font-family: var(--font-family) !important;
+}
+
+/* Code Blocks */
+.stCode {
+  background-color: var(--bg-panel) !important;
+  border: 1px solid var(--border-muted) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-high) !important;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace !important;
+}
+
+/* Power BI Status Indicators */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-lg);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--elevation-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.status-active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1));
+  color: var(--text-success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.status-warning {
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.2), rgba(255, 140, 0, 0.1));
+  color: var(--text-warning);
+  border: 1px solid rgba(255, 140, 0, 0.3);
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+}
+
+.status-danger {
+  background: linear-gradient(135deg, rgba(209, 52, 56, 0.2), rgba(209, 52, 56, 0.1));
+  color: var(--text-danger);
+  border: 1px solid rgba(209, 52, 56, 0.3);
+  box-shadow: 0 0 20px rgba(209, 52, 56, 0.2);
+}
+
+.status-info {
+  background: linear-gradient(135deg, rgba(0, 120, 212, 0.2), rgba(0, 120, 212, 0.1));
+  color: var(--text-info);
+  border: 1px solid rgba(0, 120, 212, 0.3);
+  box-shadow: 0 0 20px rgba(0, 120, 212, 0.2);
+}
+
+/* Utility Classes */
+.text-high { color: var(--text-high) !important; }
+.text-medium { color: var(--text-medium) !important; }
+.text-low { color: var(--text-low) !important; }
+.text-success { color: var(--text-success) !important; }
+.text-warning { color: var(--text-warning) !important; }
+.text-danger { color: var(--text-danger) !important; }
+
+.bg-surface { background-color: var(--bg-surface) !important; }
+.bg-panel { background-color: var(--bg-panel) !important; }
+.bg-elevated { background-color: var(--bg-elevated) !important; }
+
+.border-muted { border: 1px solid var(--border-muted) !important; }
+
+.rounded-sm { border-radius: var(--radius-sm) !important; }
+.rounded-md { border-radius: var(--radius-md) !important; }
+.rounded-lg { border-radius: var(--radius-lg) !important; }
+
+.shadow-card { box-shadow: var(--elevation-card) !important; }
+.shadow-modal { box-shadow: var(--elevation-modal) !important; }
+
+/* Animation Classes */
+.animate-hover {
+  transition: all var(--duration-short) var(--easing);
+}
+
+.animate-hover:hover {
+  transform: translateY(-2px);
+}
+
+/* Grid Layout Helpers */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-xl); }
+.grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: var(--space-xl); }
+
+@media (max-width: 900px) {
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Page-specific Styling */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+}
+
+/* Component-specific overrides */
+.plotly-graph-div {
+  background-color: var(--bg-elevated) !important;
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--border-muted) !important;
+}
+
+/* Loading states */
+.stSpinner > div {
+  border-color: var(--brand-primary) !important;
+}
+
+/* Toast notifications */
+.stToast {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-muted) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-high) !important;
+  font-family: var(--font-family) !important;
+}
+
+/* Form styling */
+.stForm {
+  background-color: var(--bg-elevated) !important;
+  border: 1px solid var(--border-muted) !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--space-2xl) !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 0 var(--space-lg);
+  }
+  
+  .main-header {
+    padding: var(--space-lg);
+    margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg)) var(--space-xl) calc(-1 * var(--space-lg));
+  }
+  
+  .metric-card, .info-card {
+    padding: var(--space-xl);
+  }
+}
